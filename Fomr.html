@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="EN">
+    <head>
+        <title> Ini Form </title>
+        <style>
+            input[type=text] {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                box-sizing: border-box;
+            }
+
+            input[type=password] {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                box-sizing: border-box;
+            }
+
+            textarea {
+                width: 100%;
+                height: 150px;
+                padding: 12px 20px;
+                box-sizing: border-box;
+                border: 2px solid #ccc;
+                border-radius: 4px;
+                background-color: #f8f8f8;
+                resize: none;
+            }
+
+            select {
+                width: 100%;
+                padding: 16px 20px;
+                border: none;
+                border-radius: 4px;
+                background-color: #f1f1f1;
+            }
+
+            input[type=button] {
+                background-color: #acecd4;
+                border: none;
+                color: rgb(0, 0, 0);
+                padding: 16px 32px;
+                text-decoration: none;
+                margin: 4px 2px;
+                cursor: pointer;
+            }
+            
+        </style>
+    </head>
+    <body>
+      <h2> Formulir Registrasi AAAGemink Coaching Center</h2>
+      <form>
+        <label for="UserName">Username Name</label>
+        <input type="text" id="Username" placeholder="AAAgemink" name="Username">
+
+        <label for="Email">Email</label>
+        <input type="text" id="Email" placeholder="AAA@gmail.com" name="Email">
+
+        <label type="kodereg">Kode Diskon</label>
+        <input type="password" id="kodereg" name="kodereg">
+
+        <label for="Paket">Paket Gemink</label>
+        <select name="Paket" id="Paket">
+            <option value="Professional Gemink">Professional Gemink</option>
+            <option value="Standard Gemink">Standard Gemink</option>
+        </select><br><br>
+
+        <label for="Umur">Umur</label><br>
+        <input type="radio" id="17-20" name="Umur" value="17-20">
+        <label for="17-20">17-20</label><br>
+        <input type="radio" id="21+" name="Umur" value="21+">
+        <label for="21+">21+</label><br><br>
+
+        <label for="perangkat">Perangkat yang dipunyai</label><br>
+        <input type="checkbox" id="PC" name="PC" value="PC">
+        <label for="PC">PC</label><br>
+        <input type="checkbox" id="Console" name="Console" value="Console">
+        <label for="Console">Console</label><br>
+        <input type="checkbox" id="Mobile" name="Mobile" value="Mobile">
+        <label for="Mobile">Mobile</label><br><br>
+
+        <input type="button" onclick="location.href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'" value="Cancel">
+        <input type="button" onclick="alert('Terimakasih Telah Memakai Jasa AAAGemink Coaching Center')" value="Submit"> 
+      </form>
+    </body>
+</html>

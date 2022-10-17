@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="EN">
+<head>
+  <title>loader</title>
+  <style>
+    .loader {
+      border: 16px solid #ffffffc7;
+      border-radius: 100%;
+      border-top: 16px solid #32739f;
+      width: 120px;
+      height: 120px;
+      animation: spin 5s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(90deg);}
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+
+<body>
+    <h1>Loading Circle Bar but lagging</h1>
+
+    <div class="loader"></div>
+</body>
+</html>

@@ -26,9 +26,6 @@
     </style>
   </head>
   <body>
-    <?php include('../config/connect.php');
-    ech ?>
-
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
@@ -40,42 +37,59 @@
             <a class="nav-link active navtxt" href="./Listcar_fadhlan.php">MyCar</a>
         </li>
     </ul>
-    
-    <h1>
-        <strong>Tambah Mobil</strong><br>
-    </h1>
-    <h4><small class="text-muted">Tambah Mobil baru</small></h4>
-    <form action="../config/edit.php" method="post" class="form" enctype="multipart/form-data">
 
-        <label class="form-label" for="Namecar">Nama Mobil</label>
-        <input type="text" class="form-control" id="Namecar" name="Namecar" placeholder="Mobil Katak" value=""><br>
-            
-        <label class="form-label" for="Nama">Nama Pemilik</label>
-        <input type="text" class="form-control" id="Nama" placeholder="Nama-Nim" name="Nama"><br>
+    <?php
+        include '../config/connect.php';
+        $id_mobil = $_GET['id_mobil'];
+        $query = "SELECT * FROM showroom_fadhlan_table where id_mobil ='$id_mobil'";
+        $show = mysqli_query($dbmain,$query);
+        while ($data = mysqli_fetch_array($show)) {
+      ?>
 
-        <label class="form-label" for="Merk">Merk Mobil</label>
-        <input type="text" class="form-control" id="Merk" placeholder="Niisama" name="Merk"><br>
 
-        <label class="form-label" for="Beli">Tanggal Beli</label>
-        <input type="text" class="form-control" id="Beli" placeholder="DD/MM/YYYY" name="Beli"><br>
-
-        <label class="form-label" for="Desc">Deskripsi</label>
-        <textarea class="form-control" id="Desc" placeholder="Blah BLAH bleh" name="Desc"></textarea><br>
-
-        <label for="Image" class="form-label">Image</label>
-        <input class="form-control" type="file" id="Image" name="Image" accept="image/*"><br>
-
-        <label for="form-label">Status Pembayaran</label> <br>
-        <div class="form-check form-check-inline">
-            <label class="form-check-label" for="Bayar"> Lunas </label>
-            <input class="form-check-input" type="radio" name="Bayar" id="Bayar" value="Lunas">
+    <div class="container mt-5 mb-5">
+    <form>
+    <div class="row">
+        <div class="col">
+            <div class="d-flex align-items:center mt-2">
+            <img src="../image/<?php echo $data['foto_mobil'];?>" class="card-img-top">
+            </div>
         </div>
-        <div class="form-check form-check-inline">
-            <label class="form-check-label" for="Bayar"> Belum Lunas </label>
-            <input class="form-check-input" type="radio" name="Bayar" id="Bayar" value="Belum Lunas"> <br>
-        </div><br><br>
 
-        <button type="submit" name="Selesai" class="btn btn-primary">Selesai</button>
-    </form>
+
+        <div class="col">
+            <form class="mt-5" style="margin-right:250px">
+            <div class="mb-3">
+
+                <label class="form-label" for="Namecar">Nama Mobil</label>
+                <input type="text" class="form-control" id="Namecar" name="Namecar" value="<?php echo $data['nama_mobil']; ?>" readonly> <br>
+                    
+                <label class="form-label" for="Nama">Nama Pemilik</label>
+                <input type="text" class="form-control" id="Nama" name="Nama" value="<?php echo $data['pemilik_mobil']; ?>" readonly><br>
+
+                <label class="form-label" for="Merk">Merk Mobil</label>
+                <input type="text" class="form-control" id="Merk" name="Merk" value="<?php echo $data['merk_mobil']; ?>" readonly><br>
+
+                <label class="form-label" for="Beli">Tanggal Beli</label>
+                <input type="date" class="form-control" id="Beli" name="Beli" value="<?php echo $data['tanggal_beli']; ?>" readonly><br>
+
+                <label class="form-label" for="Desc">Deskripsi</label>
+                <textarea class="form-control" id="Desc" name="Desc" rows="3" readonly> <?php echo $data['deskripsi']; ?></textarea><br>
+
+
+                <div>
+                    <label for="status_pembayaran" class="form-label fw-bold">Status Pembayaran</label>
+                </div>
+                <div class="mb-5 px-2">
+                    <input class="form-check-input" type="radio" name="status" value="<?php echo $data['status_pembayaran']; ?>">
+                    <label class="form-check-label" for="lunas"><?php echo $data['status_pembayaran']; ?></label>
+                </div>
+
+                <a href="../page/Edit_fadhlan.php?id_mobil=<?php  echo $data['id_mobil'];?>" class="btn btn-primary" style="width:150px;">Edit Car</a>
+                
+            </div>
+            </form>
+        </div>
+    <?php } ?>
   </body>
 </html>

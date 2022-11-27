@@ -1,5 +1,3 @@
-<?php include "../config/connect.php";?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -23,11 +21,12 @@
         .navgin {
             margin-left: 100px;
         }
-        
+
         .form{
             margin-left: 50px;
             margin-right: 50px;
         }
+        
         h1{
             margin-left: 50px;
             margin-top: 20px;
@@ -39,6 +38,7 @@
     </style>
   </head>
   <body>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <ul class="nav justify-content-left navbg">
         <li class="nav-item">
@@ -49,26 +49,35 @@
         </li>
     </ul>
 
+    <?php 
+    include '../config/connect.php';
+
+    $id_mobil = $_GET['id_mobil'];
+    $sql = "SELECT * FROM showroom_fadhlan_table where id_mobil ='$id_mobil'";
+    $tampilData = mysqli_query($dbmain,$sql);
+    while ($data = mysqli_fetch_array($tampilData)) {
+    ?>
+    
     <h1>
-        <strong>Tambah Mobil</strong><br>
+        <strong>Edit Mobil</strong><br>
     </h1>
-    <h4><small class="text-muted">Tambah Mobil baru</small></h4>
-    <form action="../config/insert.php" method="post" class="form" enctype="multipart/form-data">
+    <h4><small class="text-muted">Edit Mobil</small></h4>
+    <form action="../config/edit.php?id_mobil=<?php  echo $data['id_mobil'];?>" method="post" class="form" enctype="multipart/form-data">
 
         <label class="form-label" for="Namecar">Nama Mobil</label>
-        <input type="text" class="form-control" id="Namecar" name="Namecar" placeholder="Mobil Katak"><br>
+        <input type="text" class="form-control" id="Namecar" name="Namecar" placeholder="Mobil Katak" value="<?php echo $data['nama_mobil']; ?>"><br>
             
         <label class="form-label" for="Nama">Nama Pemilik</label>
-        <input type="text" class="form-control" id="Nama" placeholder="Nama-Nim" name="Nama"><br>
+        <input type="text" class="form-control" id="Nama" placeholder="Nama-Nim" name="Nama" value="<?php echo $data['pemilik_mobil']; ?>"><br>
 
         <label class="form-label" for="Merk">Merk Mobil</label>
-        <input type="text" class="form-control" id="Merk" placeholder="Niisama" name="Merk"><br>
+        <input type="text" class="form-control" id="Merk" placeholder="Niisama" name="Merk" value="<?php echo $data['merk_mobil']; ?>"><br>
 
         <label class="form-label" for="Beli">Tanggal Beli</label>
-        <input type="date" class="form-control" id="Beli" placeholder="DD/MM/YYYY" name="Beli"><br>
+        <input type="date" class="form-control" id="Beli" placeholder="DD/MM/YYYY" name="Beli" value="<?php echo $data['tanggal_beli']; ?>"><br>
 
         <label class="form-label" for="Desc">Deskripsi</label>
-        <textarea class="form-control" id="Desc" placeholder="Blah BLAH bleh" name="Desc"></textarea><br>
+        <textarea class="form-control" id="Desc" placeholder="Blah BLAH bleh" name="Desc"><?php echo $data['deskripsi']; ?></textarea><br>
 
         <label for="Image" class="form-label">Image</label>
         <input class="form-control" type="file" id="Image" name="Image" accept="image/*"><br>
@@ -85,5 +94,6 @@
 
         <button type="submit" name="Selesai" class="btn btn-primary">Selesai</button>
     </form>
+    <?php } ?>
   </body>
 </html>

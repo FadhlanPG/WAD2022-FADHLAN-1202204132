@@ -42,16 +42,42 @@
             <a class="nav-link active navadd" href="./Add_fadhlan.php">Add Car</a>
     </ul>
 
+
+    <div class="container mt-5 px-5">
+    <h1>My Showroom</h1>
+    <p>List Showroom</p>
+    <div class="row">
+      <?php
+        include '../config/connect.php';
+        $query = "SELECT * FROM showroom_fadhlan_table ORDER BY id_mobil ASC";
+        $show = mysqli_query($dbmain,$query);
+        while ($data = mysqli_fetch_array($show)) {
+      ?>
+          <div class="col">
+            <div class="card mt-2" style="width: 18rem;margin-bottom:25px;">
+              <img src="../image/<?php echo $data['foto_mobil'];?>" class="card-img-top"  style="min-height:200px;">
+              <div class="card-body"  style="max-height:200px;">
+                <h5 class="card-title"><?php echo $data['nama_mobil'];?></h5>
+                <p class="card-text"><?php echo $data['deskripsi'];?></p>
+                <div class="container px-5">
+                  <a href="../page/Detail_fadhlan.php?id_mobil=<?php echo $data['id_mobil'];?>" class="btn btn-primary">Detail</a>
+                  <a href="../config/delete.php?id_mobil=<?php echo $data['id_mobil'];?>" class="btn btn-danger">Delete</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php  } ?>
+    </div>
     <?php
+  
+    $carData = mysqli_query($dbmain,"SELECT * FROM showroom_fadhlan_table");
+    $countCar = mysqli_num_rows($carData);
 
-    include '../config/connect.php';
-
-    $id_mobil = ["SELECT id_mobil FROM showroom_fadhlan_table"];
-
-    $select = mysqli_query($dbmain, "SELECT * FROM showroom_fadhlan_table WHERE id_mobil  = '$id_mobil'");
-
-    $show = mysqli_fetch_assoc($select);
     ?>
+    <div class="container mt-5">
+        <p class="fw-bold opacity-50 fixed-bottom px-3">Jumlah Mobil : <?php echo "$countCar" ?></p>
+    </div>
+</div>
            
   </body>
 </html>

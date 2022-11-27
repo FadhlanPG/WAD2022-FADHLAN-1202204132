@@ -50,11 +50,6 @@
     <div class="txthome">
         <h1><b>Selamat Datang di<br>Showroom Fadhlan<br></b></h1>
         <h3><small class="text-muted">Showroom yang tidak masuk akal</small></h3><br>
-        <h4>
-            <form action="../config/cekitem.php" method="POST">
-                <input type="submit" class="btn btn-primary" id="cekitem" value="MyItem">
-            </form>
-        </h4><br>
         <h5><img src="./logo-ead.png" alt="logo EAD" width="100" height="24"><small class="text-muted">Fadhlan_11202204132</small></h5>
     </div>
     <div class="imgbig">
@@ -62,3 +57,5 @@
     </div>
   </body>
 </html>
+
+<!-- Surrend dah -->

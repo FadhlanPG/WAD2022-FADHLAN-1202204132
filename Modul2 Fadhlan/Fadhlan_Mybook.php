@@ -44,13 +44,13 @@
 
     <?php
     $name = $_POST['Name'];
-    $nohp = $_P0ST['Nohp'];
+    $nohp = $_POST['Nohp']; //POST = P0ST
     $date = $_POST['tggl'];
     $time = $_POST['mulai'];
     $hari = $_POST['Durasi'];
     $jenis = $_POST['Jenis'];
-    $driver = issset($_POST['Driver']) ? $_POST['Driver'] : '0';
-    $heath = isset($_POST['Health']) ? $_POST['Health'] : '0';
+    $driver = isset($_POST['Driver']) ? $_POST['Driver'] : '0'; //Issset = Isset
+    $health = isset($_POST['Health']) ? $_POST['Health'] : '0'; // health = heath
     $hargatotal = ($jenis*$hari)+$driver+$health;
     ?>
 
@@ -112,7 +112,7 @@
                         }
                         ?>
                     </th>
-                    <th>$<?php echo $hargatotal?></th>
+                    <th><?php echo $hargatotal?></th>
 
                 </tr>
             </tbody>

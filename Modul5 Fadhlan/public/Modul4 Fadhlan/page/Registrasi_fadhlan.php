@@ -1,6 +1,3 @@
-<?php if(!session_id()) {
-    session_start();
-}?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,18 +9,6 @@
 
   <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    
-    <?php if (isset($_SESSION['unregister'])) { ?>
-        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <strong class="me-auto">Alert</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-                <?= $_SESSION['unregister'];?>
-            </div>
-        </div>
-    <?php unset($_SESSION['unregister']); }?>
 
     <div class="container mt-5 mb-5">
             <div class="row">
